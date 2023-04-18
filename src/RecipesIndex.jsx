@@ -7,7 +7,7 @@ export function RecipesIndex(props) {
           <h2>{recipe.title}</h2>
           <img src={recipe.image_url} />
           <p>{recipe.chef}</p>
-          <button onClick={props.onShowRecipe}>More Info!</button>
+          <button onClick={() => props.onShowRecipe(recipe)}>More Info!</button>
         </div>
       ))}
     </div>
