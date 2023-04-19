@@ -33,7 +33,7 @@ export function Content() {
 
   // HTML (CAN include some JavaScript too)
   return (
-    <div>
+    <div className="container">
       <RecipesNew />
       <RecipesIndex recipes={recipes} onShowRecipe={handleShowRecipe} />
       <Modal show={isRecipesShowVisible} onClose={handleClose}>

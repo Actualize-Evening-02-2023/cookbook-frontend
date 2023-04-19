@@ -1,7 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+
+#root{
+  background-image: url("./assets/retina_wood.png");
+}
+
 #recipes-index img {
   width: 300px;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+.nav-link {
+  color: white !important;
+}
+
+.navbar-brand {
+  font-family: 'Monoton', cursive;
+  font-size: 50px !important;
+}
+
+.card-img-top{
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
 }
