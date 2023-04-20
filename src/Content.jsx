@@ -5,6 +5,7 @@ import { RecipesIndex } from "./RecipesIndex";
 import { Modal } from "./Modal";
 import { RecipesShow } from "./RecipesShow";
 import { Signup } from "./Signup";
+import { Login } from "./Login";
 
 export function Content() {
   // ALLLLL JavaScript (NO HTML AT ALL)
@@ -36,6 +37,7 @@ export function Content() {
   return (
     <div className="container">
       <Signup />
+      <Login />
       <RecipesNew />
       <RecipesIndex recipes={recipes} onShowRecipe={handleShowRecipe} />
       <Modal show={isRecipesShowVisible} onClose={handleClose}>
