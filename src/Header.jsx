@@ -1,4 +1,4 @@
-import { LogoutLink } from "./Logout";
+import { LogoutLink } from "./LogoutLink";
 
 export function Header() {
   return (
