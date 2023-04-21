@@ -1,12 +1,9 @@
-import axios from "axios";
 export function RecipesShow(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
-    axios.patch(`http://localhost:3000/recipes/${props.recipe.id}.json`, params).then((response) => {
-      console.log(response.data);
-      event.target.reset();
-    });
+    props.onUpdateRecipe(params, props.recipe.id);
+    event.target.reset();
   };
 
   return (
