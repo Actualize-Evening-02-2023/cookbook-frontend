@@ -61,14 +61,7 @@ export function Content() {
   const handleDestroyRecipe = (recipe) => {
     axios.delete(`http://localhost:3000/recipes/${recipe.id}.json`).then((response) => {
       console.log(response.data);
-
-      for (let i = 0; i < recipes.length; i++) {
-        if (recipes[i].id === recipe.id) {
-          recipes.splice(i, 1);
-        }
-      }
-
-      setRecipes(recipes);
+      setRecipes(recipes.filter((r) => r.id !== recipe.id));
       handleClose();
     });
   };
