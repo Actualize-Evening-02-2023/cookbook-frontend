@@ -8,7 +8,7 @@ import { Signup } from "./Signup";
 import { Login } from "./Login";
 
 export function Content() {
-  // ALLLLL JavaScript (NO HTML AT ALL)
+  // ALLLLL JavaScript (NO HTML)
 
   // variable, function to change, useState -> sets initial value for variable
   const [recipes, setRecipes] = useState([]);
@@ -34,6 +34,8 @@ export function Content() {
   const handleCreateRecipe = (params) => {
     axios.post("http://localhost:3000/recipes.json", params).then((response) => {
       console.log(response);
+
+      // adds new recipe to array!
       setRecipes([...recipes, response.data]);
     });
   };
@@ -42,6 +44,8 @@ export function Content() {
     axios.patch(`http://localhost:3000/recipes/${id}.json`, params).then((response) => {
       console.log(response.data);
       setCurrentRecipe(response.data);
+
+      // replaces OLD recipe with edited/updated version!
       setRecipes(
         recipes.map((recipe) => {
           if (recipe.id === response.data.id) {
