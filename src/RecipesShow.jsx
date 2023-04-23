@@ -6,6 +6,10 @@ export function RecipesShow(props) {
     event.target.reset();
   };
 
+  const handleClick = () => {
+    props.onDeleteRecipe(props.recipe);
+  };
+
   return (
     <div>
       <h2>{props.recipe.title}</h2>
@@ -19,7 +23,9 @@ export function RecipesShow(props) {
           <p>Ingredients: No ingredients for this recipe</p>
         )}
       </ul>
-
+      <button onClick={handleClick} class="btn btn-danger">
+        Delete Recipe
+      </button>
       <h2>Edit recipe</h2>
       <form onSubmit={handleSubmit}>
         <div>

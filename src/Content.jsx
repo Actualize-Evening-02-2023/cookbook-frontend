@@ -58,6 +58,21 @@ export function Content() {
     });
   };
 
+  const handleDestroyRecipe = (recipe) => {
+    axios.delete(`http://localhost:3000/recipes/${recipe.id}.json`).then((response) => {
+      console.log(response.data);
+
+      for (let i = 0; i < recipes.length; i++) {
+        if (recipes[i].id === recipe.id) {
+          recipes.splice(i, 1);
+        }
+      }
+
+      setRecipes(recipes);
+      handleClose();
+    });
+  };
+
   useEffect(handleIndexRecipes, []);
 
   // HTML (CAN include some JavaScript too)
@@ -68,7 +83,7 @@ export function Content() {
       <RecipesNew onCreateRecipe={handleCreateRecipe} />
       <RecipesIndex recipes={recipes} onShowRecipe={handleShowRecipe} />
       <Modal show={isRecipesShowVisible} onClose={handleClose}>
-        <RecipesShow recipe={currentRecipe} onUpdateRecipe={handleUpdateRecipe} />
+        <RecipesShow recipe={currentRecipe} onUpdateRecipe={handleUpdateRecipe} onDeleteRecipe={handleDestroyRecipe} />
       </Modal>
     </div>
   );
