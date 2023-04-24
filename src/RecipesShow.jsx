@@ -13,6 +13,7 @@ export function RecipesShow(props) {
   return (
     <div>
       <h2>{props.recipe.title}</h2>
+      <img src={props.recipe.image_url} alt="" />
       <p>Chef: {props.recipe.chef}</p>
       <p>Prep Time:{props.recipe.friendly_prep_time}</p>
 
