@@ -12,7 +12,7 @@ export function RecipesNew(props) {
       <h1>New recipe</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          Title: <input name="title" type="number" />
+          Title: <input name="title" type="text" />
         </div>
         <div>
           Chef: <input name="chef" type="text" />
