@@ -6,9 +6,9 @@ export function Header() {
     <header>
       <nav className="navbar bg-dark navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#" style={{ color: "red" }}>
+          <Link className="navbar-brand" to="/" style={{ color: "red" }}>
             Cookr
-          </a>
+          </Link>
           <button
             style={{ backgroundColor: "red" }}
             className="navbar-toggler"
@@ -24,19 +24,14 @@ export function Header() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
-                  Home
-                </a>
+                <Link className="nav-link" to="/recipes">
+                  Recipes
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#recipes-index">
-                  All Recipes
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#recipes-new">
+                <Link className="nav-link" to="/recipes/new">
                   New Recipe
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/signup">

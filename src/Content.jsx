@@ -7,6 +7,7 @@ import { Modal } from "./Modal";
 import { RecipesShow } from "./RecipesShow";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
+import { RecipesShowPage } from "./RecipesShowPage";
 
 export function Content() {
   // ALLLLL JavaScript (NO HTML)
@@ -74,10 +75,12 @@ export function Content() {
       <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/recipes/new" element={<RecipesNew onCreateRecipe={handleCreateRecipe} />} />
+        <Route path="/recipes" element={<RecipesIndex recipes={recipes} onShowRecipe={handleShowRecipe} />} />
+        <Route path="/" element={<RecipesIndex recipes={recipes} onShowRecipe={handleShowRecipe} />} />
+        <Route path="/recipes/:id" element={<RecipesShowPage />} />
       </Routes>
 
-      <RecipesNew onCreateRecipe={handleCreateRecipe} />
-      <RecipesIndex recipes={recipes} onShowRecipe={handleShowRecipe} />
       <Modal show={isRecipesShowVisible} onClose={handleClose}>
         <RecipesShow recipe={currentRecipe} onUpdateRecipe={handleUpdateRecipe} onDeleteRecipe={handleDestroyRecipe} />
       </Modal>

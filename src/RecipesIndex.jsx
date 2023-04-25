@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 export function RecipesIndex(props) {
   return (
     <div id="recipes-index">
@@ -13,6 +14,9 @@ export function RecipesIndex(props) {
                 <button className="btn btn-primary" onClick={() => props.onShowRecipe(recipe)}>
                   More Info!
                 </button>
+                <Link to={`/recipes/${recipe.id}`} className="btn btn-secondary">
+                  View Recipe
+                </Link>
               </div>
             </div>
           </div>
