@@ -8,12 +8,18 @@ export function RecipesIndex(props) {
       <div>
         Search Recipes:{" "}
         <input
+          list="titles"
           value={searchFilter}
           type="text"
           onChange={event => {
             setSearchFilter(event.target.value);
           }}
         />
+        <datalist id="titles">
+          {props.recipes.map(recipe => (
+            <option key={recipe.title} value={recipe.title}></option>
+          ))}
+        </datalist>
       </div>
       <div className="row">
         {props.recipes
