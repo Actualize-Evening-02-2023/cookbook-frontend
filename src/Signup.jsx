@@ -4,6 +4,7 @@ import { useState } from "react";
 export function Signup() {
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState("");
+  const [status, setStatus] = useState(null);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -18,6 +19,7 @@ export function Signup() {
       })
       .catch(error => {
         console.log(error.response.data.errors);
+        setStatus(error.response.status);
         setErrors(error.response.data.errors);
       });
   };
@@ -25,6 +27,8 @@ export function Signup() {
   return (
     <div id="signup">
       <h1>Signup</h1>
+      {/* statement to evaluate ? truthy response : falsey response */}
+      {status ? <img src={`https://httpstatusdogs.com/img/${status}.jpg`} /> : null}
       <ul>
         {errors.map(error => (
           <li key={error}>{error}</li>
@@ -37,7 +41,10 @@ export function Signup() {
             className="form-control"
             maxLength={20}
             value={name}
-            onChange={event => setName(event.target.value)}
+            onChange={event => {
+              setName(event.target.value);
+              console.log(name);
+            }}
             name="name"
             type="text"
           />
