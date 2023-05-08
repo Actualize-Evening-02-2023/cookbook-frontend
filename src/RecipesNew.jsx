@@ -1,6 +1,7 @@
 import { useState } from "react";
+import axios from "axios";
 
-export function RecipesNew(props) {
+export function RecipesNew() {
   const [uploadedImg, setUploadedImg] = useState(null);
 
   const handleSubmit = event => {
@@ -8,13 +9,18 @@ export function RecipesNew(props) {
     console.log("handleSubmit");
     const params = new FormData(event.target);
     params.append("image_file", uploadedImg);
-    props.onCreateRecipe(params);
-    event.target.reset();
-    window.location.href = "/";
+
+    axios.post("http://localhost:3000/recipes.json", params).then(response => {
+      console.log(response);
+      event.target.reset();
+      window.location.href = "/";
+    });
   };
 
   const handleSetFile = event => {
-    setUploadedImg(event.target.files[0]);
+    if (event.target.files.length > 0) {
+      setUploadedImg(event.target.files[0]);
+    }
   };
 
   return (
@@ -37,8 +43,10 @@ export function RecipesNew(props) {
           Prep Time: <input name="prep_time" type="number" />
         </div>
         <div>
-          {/* Image URL: <input name="image_url" type="text" /> */}
-          Upload Image: <input onClick={handleSetFile} type="file" />
+          Image URL: <input name="image_url" type="text" />
+        </div>
+        <div>
+          Upload Image: <input type="file" onChange={handleSetFile} />
         </div>
         <button type="submit">Create recipe</button>
       </form>

@@ -18,13 +18,13 @@ export function Content() {
   const [currentRecipe, setCurrentRecipe] = useState({});
 
   const handleIndexRecipes = () => {
-    axios.get("http://localhost:3000/recipes.json").then(function (response) {
+    axios.get("http://localhost:3000/recipes.json").then(function(response) {
       console.log(response);
       setRecipes(response.data);
     });
   };
 
-  const handleShowRecipe = (recipe) => {
+  const handleShowRecipe = recipe => {
     setIsRecipesShowVisible(true);
     setCurrentRecipe(recipe);
   };
@@ -33,23 +33,14 @@ export function Content() {
     setIsRecipesShowVisible(false);
   };
 
-  const handleCreateRecipe = (params) => {
-    axios.post("http://localhost:3000/recipes.json", params).then((response) => {
-      console.log(response);
-
-      // adds new recipe to array!
-      setRecipes([...recipes, response.data]);
-    });
-  };
-
   const handleUpdateRecipe = (params, id) => {
-    axios.patch(`http://localhost:3000/recipes/${id}.json`, params).then((response) => {
+    axios.patch(`http://localhost:3000/recipes/${id}.json`, params).then(response => {
       console.log(response.data);
       setCurrentRecipe(response.data);
 
       // replaces OLD recipe with edited/updated version!
       setRecipes(
-        recipes.map((recipe) => {
+        recipes.map(recipe => {
           if (recipe.id === response.data.id) {
             return response.data;
           } else {
@@ -60,9 +51,9 @@ export function Content() {
     });
   };
 
-  const handleDestroyRecipe = (recipe) => {
-    axios.delete(`http://localhost:3000/recipes/${recipe.id}.json`).then((response) => {
-      setRecipes(recipes.filter((r) => r.id !== recipe.id));
+  const handleDestroyRecipe = recipe => {
+    axios.delete(`http://localhost:3000/recipes/${recipe.id}.json`).then(response => {
+      setRecipes(recipes.filter(r => r.id !== recipe.id));
       handleClose();
     });
   };
@@ -75,7 +66,7 @@ export function Content() {
       <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/recipes/new" element={<RecipesNew onCreateRecipe={handleCreateRecipe} />} />
+        <Route path="/recipes/new" element={<RecipesNew />} />
         <Route path="/recipes" element={<RecipesIndex recipes={recipes} onShowRecipe={handleShowRecipe} />} />
         <Route path="/" element={<RecipesIndex recipes={recipes} onShowRecipe={handleShowRecipe} />} />
         <Route path="/recipes/:id" element={<RecipesShowPage />} />
