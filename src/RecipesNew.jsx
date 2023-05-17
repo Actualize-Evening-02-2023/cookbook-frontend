@@ -12,8 +12,8 @@ export function RecipesNew() {
 
     axios.post("http://localhost:3000/recipes.json", params).then(response => {
       console.log(response);
-      event.target.reset();
-      window.location.href = "/";
+      // event.target.reset();
+      // window.location.href = "/";
     });
   };
 
