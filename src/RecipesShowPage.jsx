@@ -7,7 +7,7 @@ export function RecipesShowPage() {
   const params = useParams();
 
   const handleShowRecipe = () => {
-    axios.get(`http://localhost:3000/recipes/${params.id}.json`).then((response) => {
+    axios.get(`/recipes/${params.id}.json`).then(response => {
       setRecipe(response.data);
     });
   };
@@ -23,7 +23,7 @@ export function RecipesShowPage() {
 
       <ul>
         {recipe?.ingredients_list ? (
-          recipe.ingredients_list.map((ingredient) => <li key={ingredient}>{ingredient}</li>)
+          recipe.ingredients_list.map(ingredient => <li key={ingredient}>{ingredient}</li>)
         ) : (
           <p>Ingredients: No ingredients for this recipe</p>
         )}

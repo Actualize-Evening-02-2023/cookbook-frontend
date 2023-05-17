@@ -10,7 +10,7 @@ export function RecipesNew() {
     const params = new FormData(event.target);
     params.append("image_file", uploadedImg);
 
-    axios.post("http://localhost:3000/recipes.json", params).then(response => {
+    axios.post("/recipes.json", params).then(response => {
       console.log(response);
       // event.target.reset();
       // window.location.href = "/";

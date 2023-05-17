@@ -18,7 +18,7 @@ export function Content() {
   const [currentRecipe, setCurrentRecipe] = useState({});
 
   const handleIndexRecipes = () => {
-    axios.get("http://localhost:3000/recipes.json").then(function(response) {
+    axios.get("/recipes.json").then(function(response) {
       console.log(response);
       setRecipes(response.data);
     });
@@ -34,7 +34,7 @@ export function Content() {
   };
 
   const handleUpdateRecipe = (params, id) => {
-    axios.patch(`http://localhost:3000/recipes/${id}.json`, params).then(response => {
+    axios.patch(`/recipes/${id}.json`, params).then(response => {
       console.log(response.data);
       setCurrentRecipe(response.data);
 
@@ -52,7 +52,7 @@ export function Content() {
   };
 
   const handleDestroyRecipe = recipe => {
-    axios.delete(`http://localhost:3000/recipes/${recipe.id}.json`).then(response => {
+    axios.delete(`/recipes/${recipe.id}.json`).then(response => {
       setRecipes(recipes.filter(r => r.id !== recipe.id));
       handleClose();
     });
